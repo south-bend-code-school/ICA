@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+    color: black;
+}
+
+.form-control{
+    color:white;
+}
+.btn{
+    color:black;
+    width: 100%;
+}
+form{
+    opacity: 0.85;
+    padding: 100px;
+    border-radius: 90%;
+    box-shadow: 0	0px	12px;
+}
+
