@@ -1,0 +1,50 @@
+body{
+    margin:0px;
+    padding:0px;
+    color:black;
+}
+.container{
+    width:100% !important;
+    margin:0px !important;
+    padding:0px !important;
+    float:left;
+}
+.row{
+    text-align:center;
+    width:100% !important;
+    margin: 0px !important;
+}
+.page-header{
+    background-color:lightgray;
+    margin:0px !important;
+    padding-bottom:-50px !important;
+    width:100% !important;
+}
+.dropdown{
+    float:left !important;
+    height: 100% !important;
+}
+#menuDropdown{
+    height: 100% !important;
+    margin-left:0px !important;
+    padding-left: 5px !important;
+    color:black;
+    background-color:lightgray;
+}
+#orderByDropdown{
+    float:left;
+    margin-top:7px;
+    
+}
+#playerTitle{
+    text-align:right;
+}
+.columns {
+    width: 50%;
+    height: 100%;
+    display:inline-block;
+    border-right: 1px;
+    background-size: cover;
+}
+
+

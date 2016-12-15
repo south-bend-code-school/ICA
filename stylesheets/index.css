@@ -1,19 +1,33 @@
-h1{
-    text-align: center;
-    color: black;
+body{
+    margin:0px;
+    padding:0px;
+    color:black;
 }
-
-.form-control{
-    color:white;
+.container{
+    width:100% !important;
+    margin:0px !important;
+    padding:0px !important;
+    float:left;
 }
-.btn{
+.row{
+    text-align:center;
+    width:100% !important;
+    margin: 0px !important;
+    padding:0px !important;
+}
+#header{
+    background-color:lightgray;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+button{
     color:black;
     width: 100%;
 }
 form{
+    margin-top:20px;
     opacity: 0.85;
     padding: 100px;
-    border-radius: 90%;
-    box-shadow: 0	0px	12px;
+    box-shadow: 0 0px 12px;
 }
-

@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>ICA</title>
+    <title>ICA - Settings</title>
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <!--JS-->
-    <script src="javascripts/index.js"></script> 
+    <script src="../javascripts/settings.js"></script> 
     <!--CSS file-->
-    <link href="stylesheets/index.css" rel="stylesheet" type="text/css">
+    <link href="../stylesheets/settings.css" rel="stylesheet" type="text/css">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -33,37 +33,34 @@
 
 <div class="container">
     <div class="row">
-        <div id="header" class="col-md-offset-3 col-md-6 page-header">
-            <h4>Login</h4>
+        <!--Header of Page-->
+        <div class="col-md-offset-3 col-md-6">
+            <h3>Settings</h3>
         </div>
     </div>
+    <div class="row">
+        <!--top left menu-->
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <img width="10px" height="10px" src="https://yellowelcamino.files.wordpress.com/2014/09/menu-icon.png">
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>Players</li>
+                    <li>Settings</li>
+                </ul>
+            </div> 
+        </div>
+    </div>
+    <!--Listing user information-->
+    <div class="row">
+        <div id="info" class="col-md-offset-2 col-md-10">
+            <ul class="list-group">
+                <li id="nameDisplay" class="list-group-item"></li>
+                <li id="positionDisplay" class="list-group-item"></li>
+                <li id="helpDisplay" class="list-group-item"></li>
 
-    <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            <h2>Integrated Concussion Analytics</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-            <h1>ICA</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="teamTxt" placeholder="Team">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="usernameTxt" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="passwordTxt" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <button type="button" class="btn btn-default" id="loginBtn">Login</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
@@ -71,4 +68,5 @@
 </body>
 
 </html>
+
 
