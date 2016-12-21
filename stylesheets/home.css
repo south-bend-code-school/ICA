@@ -46,5 +46,10 @@ body{
     border-right: 1px;
     background-size: cover;
 }
-
+/*#middleDivide{
+    border-right: solid black;
+    width: 1px;
+    height: 1000px;
+    display:block;
+}*/
 

@@ -17,6 +17,7 @@ window.onload = function(){
 }
 
 
+
 /*Columns of data with given info*/
 //Sync object changes
 firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {
@@ -37,13 +38,15 @@ firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {
         var div = document.createElement('div');
         var image = document.createElement('img');
         var aTag = document.createElement('a');
-        aTag.setAttribute('href','player.html?player='+dataKeys[i].FName+dataKeys[i].LName);
+        aTag.setAttribute('href','player.html?player='+dataKeys[i].FName+dataKeys[i].LName+'&team='+team_name);
 
         //create text, load image to put into elements above
         var nameText = document.createTextNode(dataKeys[i].LName+','+dataKeys[i].FName);
         var positionText = document.createTextNode(dataKeys[i].Position);
-        imageRef = storageRef.ref('/PlayerImages/'+dataKeys[i].FName+dataKeys[i].LName+'.png');
+
         //get download image url from storage of firebase; if pic not present use default
+        /*CODE WAS SUPPOSE TO RETURN FIREBASE STORAGE BUT THAT DIDNT WORK SO USING LOCAL STORAGE
+        imageRef = storageRef.ref('/PlayerImages/'+dataKeys[i].FName+dataKeys[i].LName+'.png');
         imageRef.getDownloadURL().then(function(url){
             //TODO:then function running after loop
             imageURL = url;
@@ -54,20 +57,22 @@ firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {
             console.log(error);
             console.log(errorCode+'\n'+errorMessage);
             image.src = 'https://lh3.googleusercontent.com/-ga3rdcSM4Ew/AAAAAAAAAAI/AAAAAAAAAAA/AxsyS8ZZ1xM/photo.jpg';
-        });
-            image.src = imageURL;
-            image.style.maxWidth = "100%";
-            image.style.display = "inline-grid";
-            image.style.float = "left";
-            image.style.clear = "both";
+        });*/
+        //set image source
+        image.src = "../images/"+dataKeys[i].FName+dataKeys[i].LName+".png";
+        image.onerror = function(){
+            image.src = "../images/default.png";
+        }
 
         //append text/pic to elements
         name.appendChild(nameText);
         position.appendChild(positionText);
+
         //add elements to div
         right_div.appendChild(name);
         right_div.appendChild(position);
         left_div.appendChild(image);
+
         //make div changes
         div.style.textAlign = "center";
         div.style.border = "solid black 1px";
@@ -75,14 +80,21 @@ firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {
         div.style.width = "100%";
         div.style.height = "100px";
         div.style.margin = "1em";
-        div.style.display = "inline-grid";
-        //left_div.style.overflow = "auto";
+        div.style.display = "inline-block";
+        div.style.borderRadius = "50% 0% 0% 50%";
+        div.style.borderLeftColor = "white";
+
         left_div.style.maxWidth = "25%";
-        left_div.style.maxHeight = "100%";
         left_div.style.float = "left";
-        left_div.style.display = "inline-grid";
         left_div.style.clear = "both";
         right_div.style.maxWidth = "75%";
+
+        image.style.width = "75%";
+        image.style.height = "100px";
+        image.style.display = "block";
+        image.style.clear = "both";
+        image.style.borderRadius = "50%";
+
         //append divs
         div.appendChild(left_div);
         div.appendChild(right_div);

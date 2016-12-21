@@ -1,0 +1,29 @@
+body{
+    margin:0px;
+    padding:0px;
+    color:black;
+}
+.container{
+    width:100% !important;
+    margin:0px !important;
+    padding:0px !important;
+    float:left;
+}
+.row{
+    text-align:center;
+    width:100% !important;
+    margin: 0px !important;
+    padding:0px !important;
+}
+#header{
+    background-color:lightgray;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+/* ^^^^ BASICS NEEDED TO GET DIVS TO STRETCH TO WHOLE PAGE, STACK UP EVENLY, AND SOME OTHER STUFF*/
+.box{
+    border: solid black;
+    width: 300px;
+    height: 300px;
+}

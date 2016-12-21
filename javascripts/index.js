@@ -18,7 +18,7 @@ function login(){
 
     //check if teams exists, if that user belongs to that team, and password matches user password in database
     //TODO:Log user in using "logUserInWithEmailAndPassword"
-    return firebase.database().ref('Teams/'+teamName+'/Users/'+username).once('value').then(function(snapshot){
+    firebase.database().ref('Teams/'+teamName+'/Users/'+username).once('value').then(function(snapshot){
         if (pwd == snapshot.val().Password){
             window.location = 'views/home.html?team='+teamName;
         }
