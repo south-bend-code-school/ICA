@@ -75,19 +75,22 @@ firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {
 
         //make div changes
         div.style.textAlign = "center";
-        div.style.border = "solid black 1px";
+//        div.style.border = "solid black 1px";
         div.style.float = "left";
         div.style.width = "100%";
         div.style.height = "100px";
         div.style.margin = "1em";
         div.style.display = "inline-block";
         div.style.borderRadius = "50% 0% 0% 50%";
-        div.style.borderLeftColor = "white";
+//        div.style.borderLeftColor = "white";
 
         left_div.style.maxWidth = "25%";
         left_div.style.float = "left";
         left_div.style.clear = "both";
-        right_div.style.maxWidth = "75%";
+        right_div.style.width = "75%";
+        right_div.style.border = "solid black 1px";
+        right_div.style.float = "right";
+        right_div.style.paddingTop = "10px";
 
         image.style.width = "75%";
         image.style.height = "100px";
