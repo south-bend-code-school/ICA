@@ -32,39 +32,34 @@
 <body>
 
 <div class="container">
-    <div class="row">
-        <!--Header of Page-->
-        <div class="col-md-offset-3 col-md-6">
-            <h3>Settings</h3>
-        </div>
-    </div>
-    <div class="row">
+    <div id="header" class="row">
         <!--top left menu-->
-        <div class="col-md-2">
-            <div class="dropdown">
+        <div id="menuDropdown" class="col-md-1">
+            <div id="menuDropdown" class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="menuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <img width="10px" height="10px" src="https://yellowelcamino.files.wordpress.com/2014/09/menu-icon.png">
+                <img width="30px" height="30px" src="https://yellowelcamino.files.wordpress.com/2014/09/menu-icon.png">
                 <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li>Players</li>
+                <ul id="menuDropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <a id="homeLink"><li>Home</li></a>
                     <li>Settings</li>
                 </ul>
             </div> 
         </div>
-    </div>
-    <!--Listing user information-->
-    <div class="row">
-        <div id="info" class="col-md-offset-2 col-md-10">
-            <ul class="list-group">
-                <li id="nameDisplay" class="list-group-item"></li>
-                <li id="positionDisplay" class="list-group-item"></li>
-                <li id="helpDisplay" class="list-group-item"></li>
-
+        <!--Header of Page with menu at top left-->
+        <div class="col-md-offset-2 col-md-6">
+            <h4>User Settings</h4>
         </div>
     </div>
 </div>
-
+<!--Listing user information-->
+<div class="row">
+    <div id="leftBorder" class="col-md-3"></div>
+    <div id="userInfo" class="col-md-6">
+        <img id="userPic" src="../images/default.png"><h3>Last Name: Ever, First Name: Greatest</h3>
+        <h4>Position with Team:<small><strong>Trainer<strong></small></h4>
+    </div>
+</div>
 </body>
 
 </html>
