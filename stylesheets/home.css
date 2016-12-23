@@ -14,8 +14,8 @@ body{
     width:100% !important;
     margin: 0px !important;
 }
-.page-header{
-    background-color:lightgray;
+#header{
+    background-color:lightgray !important;
     margin:0px !important;
     padding-bottom:-50px !important;
     width:100% !important;

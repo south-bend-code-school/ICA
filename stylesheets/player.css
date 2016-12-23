@@ -22,6 +22,18 @@ body{
     width:100%;
 }
 /* ^^^^ BASICS NEEDED TO GET DIVS TO STRETCH TO WHOLE PAGE, STACK UP EVENLY, AND SOME OTHER STUFF*/
+.dropdown{
+    float:left !important;
+    height: 100% !important;
+}
+#menuDropdown{
+    height: 100% !important;
+    margin-left:0px !important;
+    padding-left: 5px !important;
+    color:black;
+    background-color:lightgray;
+}
+/*^^^^^^^^^ MENU STUFF*/
 .box{
     border: solid black;
     width: 300px;
