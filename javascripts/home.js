@@ -12,12 +12,12 @@ var tmp = location.search.split('team=')[1];
 var team_name = decodeURI(tmp);
 var dataKeys;
 var imageURLS = {};
+
 window.onload = function(){
+    var a = document.getElementById("settingsLink");
+    a.href = 'settings.html?team='+team_name;
 
 }
-
-
-
 /*Columns of data with given info*/
 //Sync object changes
 firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {

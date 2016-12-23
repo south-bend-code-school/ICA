@@ -12,14 +12,30 @@ window.onload = function(){
 }
 
 function getPlayerInfo(){
+    //get name and team
     var tmp = location.search.split("player=")[1];
     var team_name = decodeURI(tmp.split("&team=")[1]);
     var player_name = decodeURI(tmp.split("&team=")[0]);
-
+    var player_name_spaced = player_name.split(/(?=[A-Z])/).join(" ");
+    var player_first = player_name_spaced.split(" ")[0];
+    var player_last = player_name_spaced.split(" ")[1];
+    //db reference
     var dbRef = firebase.database().ref("Teams/"+team_name+"/Players");
-
-    dbRef.once('value', snapshot=> {
-        console.log(snapshot);
+    //get html elements
+    var pic = document.getElementById("playerPic");
+    var name = document.getElementById("playerName");
+    var position = document.getElementById("playerPosition");
+    var stat = document.getElementById("playerStatus");
+    dbRef.once('value').then(function(snapshot) {
+        snapshot.forEach(function(childsnap){
+            player_data = Object(childsnap.val());
+            //change player info
+            if(player_data.FName == player_first && player_data.LName == player_last){
+                pic.src = "../images/"+player_name+".png";
+                position.innerHTML = player_data.Position;
+                name.innerHTML = player_name_spaced;
+            }
+        });
     });
     
 //    var player_name = location.search.split('player=')[1];
