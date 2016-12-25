@@ -7,16 +7,12 @@ var config = {
 };
 firebase.initializeApp(config);
 
-//get Team Name before page loads
 var tmp = location.search.split('team=')[1];
 var team_name = decodeURI(tmp);
 var dataKeys;
-var imageURLS = {};
-
 window.onload = function(){
-    var a = document.getElementById("settingsLink");
-    a.href = 'settings.html?team='+team_name;
-
+var a = document.getElementById("settingsLink");
+a.href = "settings.html?team="+team_name;
 }
 /*Columns of data with given info*/
 //Sync object changes

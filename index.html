@@ -21,6 +21,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -52,10 +53,18 @@
         <div class="col-md-offset-3 col-md-6">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="teamTxt" placeholder="Team">
+                    <label for="sel1"></label>
+                    <select class="form-control" id="teamSelection">
+                        <script>
+                            var teamList = ["49ers", "Bengals", "Bears", "Bills", "Broncos", "Browns", "Buccaneers", "Cardinals", "Chargers", "Cowboys", "Eagles", "Falcons", "Giants", "Jaguars", "Jets", "Lions", "Packers", "Patriots", "Ravens", "Redskins", "Seahawks", "Steelers", "Vikings"];
+                            var i=0; 
+                            for(i;i<teamList.length;i++){
+                                document.write("<option>"+teamList[i]+"</option>");
+                            }
+                        </script>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="usernameTxt" placeholder="Username">
+                    <input type="text" class="form-control" id="emailTxt" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="passwordTxt" placeholder="Password">
