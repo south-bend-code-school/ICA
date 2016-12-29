@@ -51,3 +51,8 @@ body{
     float:left;
     text-align:left;
 }
+.no_show{
+    border:none;
+    background-color:white;
+    color:black;
+}

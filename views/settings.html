@@ -56,6 +56,13 @@
 <div class="row">
     <div id="leftBorder" class="col-md-3"></div>
     <div id="userInfo" class="col-md-6">
+        <div><button class="no_show" data-toggle="modal" data-target="#picModal"><img id="userPic"></button></div>
+        <div><button class="no_show" data-toggle="modal" data-target="#displayNameModal"><h4>Name: <small><strong id="displayName"><strong></small></h4></button></div>
+        <div><button class="no_show" data-toggle="modal" data-target="#displayPosition"><h4>Position with Team:<small><strong id="displayPosition"><strong></small></h4></button></div>
+        <div><button class="no_show"><h4>Email:<small><strong id="displayEmail"><strong></small></h4></button></div>
+        <div><p><small>(Click to edit)</small></p></div>
+    </div>
+
     <!--Image Modal-->
     <div id="picModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -67,17 +74,51 @@
             <div class="modal-body">
                 <center><form>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="picURL" placeholder="New Image URL"><button type="button" class="btn btn-default" id="picBtn">Save</button>
+                        <input type="text" class="form-control" id="newPicURL" placeholder="New Image URL"><button type="button" class="btn btn-default" id="picBtn">Save</button>
                     </div>
                 </form></center>
             </div>
         </div> 
     </div>
-
-
-        <img id="userPic" src="../images/default.png"><h3>Last Name: Ever, First Name: Greatest</h3>
-        <h4>Position with Team:<small><strong>Trainer<strong></small></h4>
     </div>
+    <!--Name Modal-->
+    <div id="displayNameModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header"> 
+                <h4 class="modal-title" id="modalHeader">Edit Display Name</h4>
+            </div>
+            <div class="modal-body">
+                <center><form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="newDisplayName" placeholder="New Display Name Here"><button type="button" class="btn btn-default" id="displayNameBtn">Save</button>
+                    </div>
+                </form></center>
+            </div>
+        </div> 
+    </div>
+    </div>
+    <!--Postition Modal-->
+    <div id="displayPosition" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header"> 
+                <h4 class="modal-title" id="modalHeader">Edit Position with the Team</h4>
+            </div>
+            <div class="modal-body">
+                <center><form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="newPosition" placeholder="New Position Here"><button type="button" class="btn btn-default" id="positionBtn">Save</button>
+                    </div>
+                </form></center>
+            </div>
+        </div> 
+    </div>
+    </div>
+
+
 </div>
 </body>
 
