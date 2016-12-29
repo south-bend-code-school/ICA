@@ -78,7 +78,7 @@ function updateDisplayName(){
 
 function updatePosition(){
     var new_position = document.getElementById("newPosition").value;
-    firebase.database().ref('/Users/'+email.split('@')[0]+'/').on('value', snapshot => { 
+/*    firebase.database().ref('/Users/'+email.split('@')[0]+'/').on('value', snapshot => { 
         var position = Object(snapshot.val()).position;
         var html_image = document.getElementById("userPic");
         var html_name = document.getElementById("displayName");
@@ -89,7 +89,7 @@ function updatePosition(){
         html_position.innerHTML = position;
         html_email.innerHTML = email;
     });
-
+*/
 }
 
 
