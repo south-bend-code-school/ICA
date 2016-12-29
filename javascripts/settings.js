@@ -77,19 +77,15 @@ function updateDisplayName(){
 }
 
 function updatePosition(){
+    var user = firebase.auth().currentUser;
     var new_position = document.getElementById("newPosition").value;
-/*    firebase.database().ref('/Users/'+email.split('@')[0]+'/').on('value', snapshot => { 
-        var position = Object(snapshot.val()).position;
-        var html_image = document.getElementById("userPic");
-        var html_name = document.getElementById("displayName");
-        var html_position = document.getElementById("displayPosition");
-        var html_email = document.getElementById("displayEmail");
-        html_image.src = picURL;
-        html_name.innerHTML = name;
-        html_position.innerHTML = position;
-        html_email.innerHTML = email;
+    firebase.database().ref('/Users/'+user.email.split('@')[0]+'/position/').transaction(function(currentVal){
+        return new_position;
+    }).then(function(){
+        location.reload(); 
+    }).catch(function(error){
+        alert(error.code+'\n'+error.message);
     });
-*/
 }
 
 
