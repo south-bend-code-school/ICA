@@ -8,6 +8,11 @@ var config = {
 firebase.initializeApp(config);
 
 window.onload = function(){
+    var team = location.search.split('team=')[1];
+    var aHome = document.getElementById("homeLink");
+    var aSettings = document.getElementById("settingsLink"); 
+    aHome.href = "home.html?team="+team;
+    aSettings.href = "settings.html?team="+team;
     getPlayerInfo();
 }
 
