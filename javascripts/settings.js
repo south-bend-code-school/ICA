@@ -30,6 +30,7 @@ function loadInfo(){
     var picURL;
     var name;
     var email;
+    var team = location.search.split('team=')[1];
     if(user != null){
         picURL = user.photoURL;
         name = user.displayName;
@@ -44,10 +45,12 @@ function loadInfo(){
             var position = Object(snapshot.val()).position;
             var html_image = document.getElementById("userPic");
             var html_name = document.getElementById("displayName");
+            var html_team = document.getElementById("displayTeam");
             var html_position = document.getElementById("displayPosition");
             var html_email = document.getElementById("displayEmail");
             html_image.src = picURL;
             html_name.innerHTML = name;
+            html_team.innerHTML = team;
             html_position.innerHTML = position;
             html_email.innerHTML = email;
         });
