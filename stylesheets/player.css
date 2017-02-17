@@ -61,4 +61,16 @@ body{
     margin-top:2%;
     text-align:left;
 }
-
+#topRightChart{
+  padding-bottom:10px;
+}
+#bottomLeftChart{
+  padding:0px;
+}
+.graph {
+  background: white;
+  width: 100%;
+  height: 100%;
+  border-left: 1px dotted #555;
+  border-bottom: 1px dotted #555;
+}
