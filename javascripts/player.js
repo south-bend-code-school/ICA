@@ -7,6 +7,10 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var tmp;
+var team_name;
+var start_seconds = new Date().getTime() / 1000;
+
 window.onload = function(){
     var team = location.search.split('team=')[1];
     var aHome = document.getElementById("homeLink");
@@ -14,12 +18,40 @@ window.onload = function(){
     aHome.href = "home.html?team="+team;
     aSettings.href = "settings.html?team="+team;
     getPlayerInfo();
+    updateGraph();
+}
+
+//when change in database occurs; get current time (record when x jumps greater than ... after how many seconds since db started updating)
+function updateGraph(){
+    var dbRef = firebase.database().ref("Teams/"+team_name+"/Chips/Chip1/accelerationData");
+    dbRef.on('value',function(snapshot){
+      var seconds = new Date().getTime() / 1000;
+      var acc = Object(snapshot.val());
+      var svg = document.getElementById('svg');
+
+      var point = svg.createSVGPoint();
+      var final_seconds = new Date().getTime() / 1000;
+      var time = (final_seconds - start_seconds)*10;
+      console.log(time);
+      var y_val = acc.x*10;
+      point.x = time;
+      point.y = y_val;
+      console.log(point);
+      var polyline= document.getElementById('hits_polyline');
+      polyline.points.appendItem(point);
+
+      //p.getAtt
+      //var points = polyline.getAttribute("hits_polyline");
+      //  points += "10, 20";
+      //  polyline.setAttribute(points);
+    });
+    
 }
 
 function getPlayerInfo(){
     //get name and team
-    var tmp = location.search.split("player=")[1];
-    var team_name = decodeURI(tmp.split("&team=")[1]);
+    tmp = location.search.split("player=")[1];
+    team_name = decodeURI(tmp.split("&team=")[1]);
     var player_name = decodeURI(tmp.split("&team=")[0]);
     var player_name_spaced = player_name.split(/(?=[A-Z])/).join(" ");
     var player_first = player_name_spaced.split(" ")[0];
