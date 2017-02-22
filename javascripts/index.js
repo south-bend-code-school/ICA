@@ -29,6 +29,12 @@ function login(){
         return;
     }
     var username = email.split("@")[0];
+    try{
+      username = username.split(".")[0];
+    }catch(error){
+      console.log(error);
+    }
+    
     if (pwd.length < 5) {
         alert('Please enter a stronger password.');
         return;
