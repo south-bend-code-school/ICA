@@ -55,7 +55,7 @@ firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {
             image.src = 'https://lh3.googleusercontent.com/-ga3rdcSM4Ew/AAAAAAAAAAI/AAAAAAAAAAA/AxsyS8ZZ1xM/photo.jpg';
         });*/
         //set image source
-        image.src = "../images/"+dataKeys[i].FName+dataKeys[i].LName+".png";
+        image.src = "../images/"+dataKeys[i].FName+dataKeys[i].LName+".jpg";
         image.onerror = function(){
             image.src = "../images/default.png";
         }
@@ -84,7 +84,7 @@ firebase.database().ref('Teams/'+team_name+'/Players/').on('value', snapshot=> {
         left_div.style.float = "left";
         left_div.style.clear = "both";
         right_div.style.width = "75%";
-        right_div.style.border = "solid black 1px";
+        right_div.style.textAlign = "left";
         right_div.style.float = "right";
         right_div.style.paddingTop = "10px";
 

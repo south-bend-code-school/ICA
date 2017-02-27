@@ -68,7 +68,7 @@ function getPlayerInfo(){
             player_data = Object(childsnap.val());
             //change player info
             if(player_data.FName == player_first && player_data.LName == player_last){
-                pic.src = "../images/"+player_name+".png";
+                pic.src = "../images/"+player_name+".jpg";
                 position.innerHTML = player_data.Position;
                 name.innerHTML = player_name_spaced;
             }
