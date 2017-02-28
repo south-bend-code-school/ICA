@@ -23,29 +23,90 @@ window.onload = function(){
 
 //when change in database occurs; get current time (record when x jumps greater than ... after how many seconds since db started updating)
 function updateGraph(){
+    var hit_distance_start = 0.0;
+    var hit_distance_final = 0.0;
+    var previous_seconds = 0.0;
+    var final_seconds = 0.0;
+    var major_hit = 0;
+    var hit_time = [0];
     var dbRef = firebase.database().ref("Teams/"+team_name+"/Chips/Chip1/accelerationData");
     dbRef.on('value',function(snapshot){
-      var seconds = new Date().getTime() / 1000;
+      //record previous seconds for array
+      previous_seconds = final_seconds;
+      final_seconds = new Date().getTime() / 1000;
+
       var acc = Object(snapshot.val());
       var svg = document.getElementById('svg');
-
+      var polyline= document.getElementById('hits_polyline');
       var point = svg.createSVGPoint();
-      var final_seconds = new Date().getTime() / 1000;
       var time = (final_seconds - start_seconds)*10;
       console.log(time);
-      var y_val = acc.x*10;
+      hit_distance_start = hit_distance_final;
+      hit_distance_final = acc.x*10;
+
+      //if distance is too great, add another hit with the time since last hit
+      if((hit_distance_final - hit_distance_start) > 1.0){
+        major_hit += 1;
+        var since_last = final_seconds - previous_seconds;
+        hit_time.push(since_last);
+      }
+      checkDamage(hit_time);
+
       point.x = time;
-      point.y = y_val;
+      point.y = major_hit;
       console.log(point);
-      var polyline= document.getElementById('hits_polyline');
       polyline.points.appendItem(point);
 
-      //p.getAtt
-      //var points = polyline.getAttribute("hits_polyline");
-      //  points += "10, 20";
-      //  polyline.setAttribute(points);
     });
+}
+
+//decrease health bar for hits that happend every 5 seconds; increase otherwise
+function checkDamage(a){
+    var len = a.length;
+    for(var i; i < len; i++){
+      if( a[i] <= 5.0){
+        decreaseHealth();
+      } else if (a[i] > 5.0){
+        increaseHealth();
+      }
+    }
+}
+
+function decreaseHealth(){
+    var bar = document.getElementById('status');
+    var current_percent = bar.offsetWidth;
+    console.log(current_percent);
+    var new_percent = current_percent - 5;
+    bar.style.width = new_percent;
     
+    if(new_precent < 75){
+      bar.style.backgroundColor = "orange";
+    } else if( new_percent < 50){
+      bar.style.backgroundColor = "darkOrange";
+    } else if( new_percent < 40){
+      bar.style.backgroundColor = "red";
+    } else{
+      bar.style.backgroundColor = "limegreen";
+    }
+}
+
+function increaseHealth(){
+    var bar = document.getElementById('status');
+    var current_percent = bar.style.offsetWidth;
+    console.log(current_percent);
+    var new_percent = current_percent + 5;
+    bar.style.width = new_percent;
+    
+    if(new_precent < 75){
+      bar.style.backgroundColor = "orange";
+    } else if( new_percent < 50){
+      bar.style.backgroundColor = "darkOrange";
+    } else if( new_percent < 40){
+      bar.style.backgroundColor = "red";
+    } else{
+      bar.style.backgroundColor = "limegreen";
+    }
+
 }
 
 function getPlayerInfo(){

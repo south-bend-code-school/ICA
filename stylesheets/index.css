@@ -1,7 +1,7 @@
 body{
     margin:0px;
     padding:0px;
-    color:black;
+    color:#3E67B1 !important;
 }
 .container{
     width:100% !important;
@@ -16,7 +16,7 @@ body{
     padding:0px !important;
 }
 #header{
-    background-color:lightgray;
+    background-color:#3E67B1;
     margin:0px;
     padding:0px;
     width:100%;
@@ -29,6 +29,6 @@ form{
     margin-top:20px;
     opacity: 0.85;
     padding: 100px;
-    background-color:lightgray;
+    background-color:#3E67B1;
     box-shadow: 0 0px 12px;
 }

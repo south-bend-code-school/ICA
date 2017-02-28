@@ -1,7 +1,7 @@
 body{
     margin:0px;
     padding:0px;
-    color:black;
+    color:black !important;
 }
 .container{
     width:100% !important;
@@ -16,7 +16,7 @@ body{
     padding:0px !important;
 }
 #header{
-    background-color:lightgray;
+    background-color:#3E67B1;
     margin:0px;
     padding:0px;
     width:100%;
@@ -30,8 +30,9 @@ body{
     height: 100% !important;
     margin-left:0px !important;
     padding-left: 5px !important;
-    color:black;
-    background-color:lightgray;
+    color:black !important;
+    background-color:#3E67B1;
+    border:none;
 }
 /*^^^^^^^^^ MENU STUFF*/
 .box{
@@ -39,6 +40,12 @@ body{
     width: 300px;
     height: 300px;
     margin:10px;
+}
+#homeLink{
+    color:black;
+}
+#settingsLink{
+    color:black;
 }
 #playerPic{
     width:200px;
@@ -51,10 +58,16 @@ body{
     padding-left:30%;
 }
 #playerStatus{ 
-    text-align: center;
+    text-align: left;
     height:25px;
-    background-color:limegreen;
     border: solid black;
+    padding:0px;
+}
+#status{
+  background-color:limegreen;
+  border:none;
+  width:100%;
+  height:100%;
 }
 #recommendations{
     height:500px;
@@ -62,12 +75,6 @@ body{
     text-align:left;
 }
 #chart{
-}
-#topRightChart{
-  padding-bottom:10px;
-}
-#bottomLeftChart{
-  padding:0px;
 }
 .graph {
   background: white;

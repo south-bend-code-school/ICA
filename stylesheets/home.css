@@ -9,13 +9,16 @@ body{
     padding:0px !important;
     float:left;
 }
+#settingsLink{
+    color:black;
+}
 .row{
     text-align:center;
     width:100% !important;
     margin: 0px !important;
 }
 #header{
-    background-color:lightgray !important;
+    background-color:#3E67B1 !important;
     margin:0px !important;
     padding-bottom:-50px !important;
     width:100% !important;
@@ -29,7 +32,8 @@ body{
     margin-left:0px !important;
     padding-left: 5px !important;
     color:black;
-    background-color:lightgray;
+    background-color:#3E67B1;
+    border:none;
 }
 #orderByDropdown{
     float:left;
@@ -37,7 +41,7 @@ body{
     
 }
 #playerTitle{
-    text-align:right;
+    text-align:left;
 }
 .columns {
     width: 50%;
@@ -46,10 +50,4 @@ body{
     border-right: 1px;
     background-size: cover;
 }
-/*#middleDivide{
-    border-right: solid black;
-    width: 1px;
-    height: 1000px;
-    display:block;
-}*/
 
