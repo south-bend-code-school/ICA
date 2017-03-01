@@ -31,4 +31,21 @@ form{
     padding: 100px;
     background-color:#3E67B1;
     box-shadow: 0 0px 12px;
+    border-radius:5%;
+}
+#teamSelection{
+  background-color:#3E67B1;
+  color:white;
+}
+#loginBtn{
+  background-color:#3E67B1;
+  color:white;
+}
+#emailTxt{
+  background-color:#3E67B1 !important;
+  color: white!important;
+}
+#passwordTxt{
+  background-color:#3E67B1 !important;
+  color:white !important;
 }

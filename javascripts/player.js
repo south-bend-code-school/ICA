@@ -74,17 +74,24 @@ function checkDamage(a){
 
 function decreaseHealth(){
     var bar = document.getElementById('status');
+    var list = document.getElementById('recommendations').value;
     var current_percent = bar.offsetWidth;
     console.log(current_percent);
-    var new_percent = current_percent - 5;
-    bar.style.width = new_percent;
-    
-    if(new_precent < 75){
+    //boundary condition
+    if(current_percent >= 0){
+      var new_percent = current_percent - 5;
+      bar.style.width = new_percent;
+    }
+
+    if(new_precent < (360*.75)){
       bar.style.backgroundColor = "orange";
-    } else if( new_percent < 50){
+    } else if( new_percent < (360*.50)){
       bar.style.backgroundColor = "darkOrange";
-    } else if( new_percent < 40){
+    } else if( new_percent < (360*.40)){
       bar.style.backgroundColor = "red";
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode("Player needs to be taken out of the game"));
+      list.appendChild(entry);
     } else{
       bar.style.backgroundColor = "limegreen";
     }
@@ -94,15 +101,20 @@ function increaseHealth(){
     var bar = document.getElementById('status');
     var current_percent = bar.style.offsetWidth;
     console.log(current_percent);
-    var new_percent = current_percent + 5;
-    bar.style.width = new_percent;
-    
-    if(new_precent < 75){
+    //bondary condition
+    if(current_percent <= 360){
+      var new_percent = current_percent + 5;
+      bar.style.width = new_percent;
+    }
+    if(new_precent < (360*.75)){
       bar.style.backgroundColor = "orange";
-    } else if( new_percent < 50){
+    } else if( new_percent < (360*.50)){
       bar.style.backgroundColor = "darkOrange";
-    } else if( new_percent < 40){
+    } else if( new_percent < (360*.40)){
       bar.style.backgroundColor = "red";
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode("Player needs to be taken out of the game"));
+      list.appendChild(entry);
     } else{
       bar.style.backgroundColor = "limegreen";
     }
