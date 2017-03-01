@@ -41,21 +41,23 @@ function updateGraph(){
       var polyline= document.getElementById('hits_polyline');
       var point = svg.createSVGPoint();
       var time = (final_seconds - start_seconds)*10;
-      console.log(time);
+      //console.log(time);
       hit_distance_start = hit_distance_final;
       hit_distance_final = acc.x*10;
 
       //if distance is too great, add another hit with the time since last hit
       if((hit_distance_final - hit_distance_start) > 1.0){
         major_hit += 1;
-        var since_last = (final_seconds - previous_seconds)*10;
+        var since_last = (final_seconds - previous_seconds)*100;
         hit_time.push(since_last);
-      }
       checkDamage(hit_time);
 
+      }
+      //increaseHealth(hit_time);
       point.x = time;
-      point.y = major_hit;
-      console.log(point);
+      var tmp = major_hit*-1;
+      point.y = tmp;
+      //console.log(point);
       polyline.points.appendItem(point);
 
     });
@@ -65,61 +67,85 @@ function updateGraph(){
 function checkDamage(a){
     var len = a.length;
     var i = len-1;
+    console.log("array values: " + a[i]);
     //for(var i; i < len; i++){
       if( a[i] <= 5.0){
         decreaseHealth();
-      } else if (a[i] > 5.0){
+      } else if(a[i] > 5.0){
         increaseHealth();
       }
     //}
 }
 
+var has_decreased = false;
+var display_message = false;
+var remove = false;
 function decreaseHealth(){
-    var bar = document.getElementById('status');
-    var list = document.getElementById('recommendations').value;
-    var current_percent = bar.offsetWidth;
-    console.log(current_percent);
-    //boundary condition
-    if(current_percent >= 0){
-      var new_percent = current_percent - 5;
-      bar.style.width = new_percent;
-    }
+    if (has_decreased) {
+      var bar = document.getElementById('status');
+      var list = document.getElementById('recommendations').value;
+      var current_percent = bar.offsetWidth;
+      //console.log jcurrent_per;
+      //boundary condition
+      if(current_percent >= 0){
+        var new_percent = current_percent - 20;
+        console.log(new_percent);
+        bar.style.width = new_percent + "px";
+        console.log(bar.offsetWidth);
+      }
 
-    if(new_precent < (360*.75)){
-      bar.style.backgroundColor = "orange";
-    } else if( new_percent < (360*.50)){
-      bar.style.backgroundColor = "darkOrange";
-    } else if( new_percent < (360*.40)){
-      bar.style.backgroundColor = "red";
-      var entry = document.createElement('li');
-      entry.appendChild(document.createTextNode("Player needs to be taken out of the game"));
-      list.appendChild(entry);
-    } else{
-      bar.style.backgroundColor = "limegreen";
-    }
+      if( new_percent >= (360*.75)){
+        bar.style.backgroundColor = "limegreen";
+      } else if( new_percent < (360*.40)){
+        bar.style.backgroundColor = "red";  
+      } else if( new_percent < (360*.50)){
+        remove = true; 
+        bar.style.backgroundColor = "darkOrange";
+        //if(display_message){
+        var list = document.getElementById('o_list');
+        /*if(remove == true){
+          list.remove(0);
+          remove = false;
+        }*/
+        var entry = document.createElement('li');
+        entry.appendChild(document.createTextNode("ALERT: Player needs to be taken out of the game"));
+        list.appendChild(entry);
+        //} 
+      } else if (new_percent < (360*.75)){
+          bar.style.backgroundColor = "orange";
+      }
+  } else {
+    has_decreased = true;
+  }
 }
 
 function increaseHealth(){
-    var bar = document.getElementById('status');
-    var current_percent = bar.style.offsetWidth;
-    console.log(current_percent);
-    //bondary condition
-    if(current_percent <= 360){
-      var new_percent = current_percent + 5;
-      bar.style.width = new_percent;
-    }
-    if(new_precent < (360*.75)){
-      bar.style.backgroundColor = "orange";
-    } else if( new_percent < (360*.50)){
-      bar.style.backgroundColor = "darkOrange";
-    } else if( new_percent < (360*.40)){
-      bar.style.backgroundColor = "red";
-      var entry = document.createElement('li');
-      entry.appendChild(document.createTextNode("Player needs to be taken out of the game"));
-      list.appendChild(entry);
-    } else{
-      bar.style.backgroundColor = "limegreen";
-    }
+    if (has_decreased) {
+      var bar = document.getElementById('status');
+      var list = document.getElementById('recommendations').value;
+      var current_percent = bar.offsetWidth;
+      //console.log jcurrent_per;
+      //boundary condition
+      if(current_percent < 350){
+        var new_percent = current_percent + 1;
+        console.log(new_percent);
+        bar.style.width = new_percent + "px";
+        console.log(bar.offsetWidth);
+      }
+
+      if( new_percent >= (360*.75)){
+        bar.style.backgroundColor = "limegreen";
+      } else if( new_percent < (360*.40)){
+        bar.style.backgroundColor = "red";  
+      } else if( new_percent < (360*.50)){  
+        bar.style.backgroundColor = "darkOrange";
+      } else if (new_percent < (360*.75)){
+          bar.style.backgroundColor = "orange";
+      }
+  } else {
+    has_decreased = true;
+  }
+
 
 }
 
