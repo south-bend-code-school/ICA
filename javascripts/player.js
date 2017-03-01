@@ -29,6 +29,7 @@ function updateGraph(){
     var final_seconds = 0.0;
     var major_hit = 0;
     var hit_time = [0];
+
     var dbRef = firebase.database().ref("Teams/"+team_name+"/Chips/Chip1/accelerationData");
     dbRef.on('value',function(snapshot){
       //record previous seconds for array
@@ -47,7 +48,7 @@ function updateGraph(){
       //if distance is too great, add another hit with the time since last hit
       if((hit_distance_final - hit_distance_start) > 1.0){
         major_hit += 1;
-        var since_last = final_seconds - previous_seconds;
+        var since_last = (final_seconds - previous_seconds)*10;
         hit_time.push(since_last);
       }
       checkDamage(hit_time);
@@ -63,13 +64,14 @@ function updateGraph(){
 //decrease health bar for hits that happend every 5 seconds; increase otherwise
 function checkDamage(a){
     var len = a.length;
-    for(var i; i < len; i++){
+    var i = len-1;
+    //for(var i; i < len; i++){
       if( a[i] <= 5.0){
         decreaseHealth();
       } else if (a[i] > 5.0){
         increaseHealth();
       }
-    }
+    //}
 }
 
 function decreaseHealth(){
